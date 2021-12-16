@@ -61,6 +61,19 @@ const getAllCustomers = async (req, res) => {
     }
 }
 
+const getCustomersByQuery = async (req, res) => {
+    try {
+        const customers = await Customer.find({
+            $or: [
+            { name: req.query.name }, 
+            { location: req.query.location } 
+        ]})
+        return res.status(200).json({ customers })
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 const getTicketById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -76,10 +89,23 @@ const getTicketById = async (req, res) => {
 
 const getAllTickets = async (req, res) => {
     try {
-        const customers = await Customer.find()
-        return res.status(200).json({ customers })
+        const tickets = await Ticket.find()
+        return res.status(200).json({ tickets })
     } catch (error) {
         return res.status(500).send(error.message);
+    }
+}
+
+const getTicketsByQuery = async (req, res) => {
+    try {
+        const tickets = await Ticket.find({
+            $or: [
+            { status: req.query.status }, 
+            { priority: req.query.priority }
+        ]})
+        return res.status(200).json({ tickets })
+    } catch (error) {
+        return res.status(500).send(error.message)
     }
 }
 
@@ -102,6 +128,21 @@ const getAllTechnicians = async (req, res) => {
         return res.status(200).json({ technicians })
     } catch (error) {
         return res.status(500).send(error.message);
+    }
+}
+
+const getTechniciansByQuery = async (req, res) => {
+    try {
+        const technicians = await Technician.find({
+            $or: [
+            { firstName: req.query.firstName }, 
+            { lastName: req.query.lastName },
+            { seniorityLevel: req.query.seniorityLevel },
+            { status: req.query.status }
+        ]})
+        return res.status(200).json({ technicians })
+    } catch (error) {
+        return res.status(500).send(error.message)
     }
 }
 
@@ -131,7 +172,7 @@ const updateTechnician = async (req, res) => {
             if (err) {
                 res.status(500).send(err);
         }
-        if (!ticket) {
+        if (!technician) {
                 res.status(500).send('Technician not found!');
             }
             return res.status(200).json(ticket);
@@ -175,10 +216,13 @@ module.exports = {
     createTechnician,
     getCustomerById,
     getAllCustomers,
+    getCustomersByQuery,
     getTicketById,
     getAllTickets,
+    getTicketsByQuery,
     getTechnicianById,
     getAllTechnicians,
+    getTechniciansByQuery,
     updateTicket,
     updateTechnician,
     deleteTicket,
