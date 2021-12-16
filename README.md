@@ -21,7 +21,8 @@
 * Install Node, Node Package Manager, and MongoDB
 * Clone this repository
 * `npm install` in /client and /backend
-* `node <filename>` each file in /backend/seed
+* `node <filename>` for each file in /backend/seed
+* `npm run dev` in /backend
 * `npm start` in /client
 
 ### Or visit - :: not yet implemented ::
