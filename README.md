@@ -27,6 +27,14 @@
 ### Or visit - :: not yet implemented ::
 ***
 
+### Planning
+[Trello Board](https://trello.com/b/1KCllJH3/dispatch-dashboard)
+***
+![Image](https://i.imgur.com/E980xap.png)
+***
+![Image](https://i.imgur.com/8RfLKNK.png)
+
+***
 ### Future Updates:
 - [ ] Server/DB Backend
 - [ ] Customers Page
