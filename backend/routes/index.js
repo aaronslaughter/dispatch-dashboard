@@ -9,6 +9,7 @@ router.get('/customer/:id', controllers.getCustomerById)
 router.get('/customer', controllers.getAllCustomers)
 router.post('/customer', controllers.createCustomer)
 
+router.get('/ticket/customer/', controllers.getTicketsByCustomerId)
 router.get('/ticket/query/', controllers.getTicketsByQuery)
 router.get('/ticket/:id', controllers.getTicketById)
 router.get('/ticket', controllers.getAllTickets)

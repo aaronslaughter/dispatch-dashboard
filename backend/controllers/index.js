@@ -109,6 +109,15 @@ const getTicketsByQuery = async (req, res) => {
     }
 }
 
+const getTicketsByCustomerId = async (req, res) => {
+    try {
+        const tickets = await Ticket.find({customer_id: req.query.customer_id})
+        return res.status(200).json({ tickets })
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 const getTechnicianById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -220,6 +229,7 @@ module.exports = {
     getTicketById,
     getAllTickets,
     getTicketsByQuery,
+    getTicketsByCustomerId,
     getTechnicianById,
     getAllTechnicians,
     getTechniciansByQuery,
