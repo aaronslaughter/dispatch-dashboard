@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function Header() {
   return (
-    <div>
-      Header Placeholder
-    </div>
+    <header>
+      <h1>DISPATCH DASHBOARD</h1>
+    </header>
   )
 }
