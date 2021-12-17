@@ -14,9 +14,10 @@ import Footer from './components/Footer'
 
 function App() {
 
-  const [customers, setCustomers] = useState(null)
-  const [tickets, setTickets] = useState(null)
-  const [technicians, setTechnicians] = useState(null)
+  const [customers, setCustomers] = useState([])
+  const [tickets, setTickets] = useState([])
+  const [technicians, setTechnicians] = useState([])
+  const [newCustomer, setNewCustomer] = useState({name: '', location: ''})
 
   useEffect(() => {
     const getCustomers = async () => {
@@ -39,6 +40,20 @@ function App() {
     getTechnicians()
   }, [])
 
+  const handleChange = (e) => {
+    setNewCustomer({...newCustomer, [e.target.name]: e.target.value})
+  }
+
+  const insertNewCustomer = () => {
+    const insert = async () => {
+      await axios.post(`${BASE_URL}/customer`, newCustomer).then(async (res) => {
+        const response = await axios.get(`${BASE_URL}/customer`)
+        setCustomers(response.data.customers)
+      })
+    }
+    insert()    
+  }
+  
   return (
     <div className="App">
       <Header/>
@@ -48,7 +63,14 @@ function App() {
         <Route exact path="/dispatch" component={ DispatchPage }></Route>
         <Route exact path="/tickets" component={ TicketsPage }></Route>
         <Route exact path="/technicians" component={ TechsPage }></Route>
-        <Route exact path="/customers" component={(props) => <CustomersPage {...props} customers={customers}/>}></Route>
+        <Route path="/customers" render={(props) => 
+          <CustomersPage
+            customers={customers} 
+            newCustomer={newCustomer}
+            handleChange={handleChange}
+            insertNewCustomer={insertNewCustomer}
+          />}>
+        </Route>
       </Switch>
       <Footer/>
     </div>
