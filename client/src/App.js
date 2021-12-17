@@ -48,7 +48,7 @@ function App() {
         <Route exact path="/dispatch" component={ DispatchPage }></Route>
         <Route exact path="/tickets" component={ TicketsPage }></Route>
         <Route exact path="/technicians" component={ TechsPage }></Route>
-        <Route exact path="/customers" component={ CustomersPage }></Route>
+        <Route exact path="/customers" component={(props) => <CustomersPage {...props} customers={customers}/>}></Route>
       </Switch>
       <Footer/>
     </div>
