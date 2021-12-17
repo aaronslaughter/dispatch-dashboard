@@ -5,6 +5,13 @@ const { Customer, Ticket, Technician } = require('../models')
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const main = async () => {
+
+  const dropCollections = async () => {
+    await Ticket.collection.drop()
+    await Customer.collection.drop()
+    await Technician.collection.drop()
+  }
+
   const customers = [...Array(10)].map((element) => {
     return new Customer({
       name: faker.company.companyName(),
@@ -38,6 +45,9 @@ const main = async () => {
       status: Math.floor(Math.random() * 2) > 0 ? "Available" : "Offline",
     })
   })
+
+  await dropCollections()
+  console.log('Dropped Collections!');
 
   await Ticket.insertMany(tickets)
   console.log('Created Tickets!');
