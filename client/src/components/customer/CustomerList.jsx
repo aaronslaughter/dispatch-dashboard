@@ -1,4 +1,5 @@
 import React from 'react'
+import CustomerListItem from './CustomerListItem'
 
 export default function CustomerList(props) {
   return (
@@ -8,9 +9,7 @@ export default function CustomerList(props) {
       <div>Open Tickets:</div>
       {props.customers.map((element, index) => (
         <div key={index}>
-          <div>{element.name}</div>
-          <div>{element.location}</div>
-          <div>{element.tickets.length}</div>
+          <CustomerListItem customer={element}/>
         </div>
       ))}
     </div>

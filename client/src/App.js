@@ -66,6 +66,7 @@ function App() {
         <Route path="/customers" render={(props) => 
           <CustomersPage
             customers={customers} 
+            tickets={tickets}
             newCustomer={newCustomer}
             handleChange={handleChange}
             insertNewCustomer={insertNewCustomer}
