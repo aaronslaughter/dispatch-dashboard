@@ -18,6 +18,7 @@ function App() {
   const [tickets, setTickets] = useState([])
   const [technicians, setTechnicians] = useState([])
   const [newCustomer, setNewCustomer] = useState({name: '', location: ''})
+  const [newTicket, setNewTicket] = useState({status: 'Open', priority: '', description: '', customer_id: ''})
 
   useEffect(() => {
     const getCustomers = async () => {
@@ -40,8 +41,12 @@ function App() {
     getTechnicians()
   }, [])
 
-  const handleChange = (e) => {
+  const handleCustomerChange = (e) => {
     setNewCustomer({...newCustomer, [e.target.name]: e.target.value})
+  }
+
+  const handleTicketChange = (e) => {
+    setNewTicket({...newTicket, [e.target.name]: e.target.value})
   }
 
   const insertNewCustomer = () => {
@@ -53,6 +58,20 @@ function App() {
     }
     insert()    
   }
+
+  const insertNewTicket = () => {
+
+    const tempNewTicket = newTicket
+    setNewTicket({status: 'Open', priority: '', description: '', customer_id: ''})
+
+    const insert = async () => {
+      await axios.post(`${BASE_URL}/ticket`, tempNewTicket).then(async (res) => {
+        const response = await axios.get(`${BASE_URL}/ticket`)
+        setTickets(response.data.tickets)
+      })
+    }
+    insert()
+  }
   
   return (
     <div className="App">
@@ -61,15 +80,24 @@ function App() {
       <Switch>
         <Route exact path="/" component={ Dashboard }></Route>
         <Route exact path="/dispatch" component={ DispatchPage }></Route>
-        <Route exact path="/tickets" component={ TicketsPage }></Route>
+        <Route path="/tickets" render={(props) => 
+          <TicketsPage
+            tickets={tickets}
+            customers={customers}
+            newTicket={newTicket}
+            handleChange={handleTicketChange}
+            insertNewTicket={insertNewTicket}/>
+          }>
+        </Route>
         <Route exact path="/technicians" component={ TechsPage }></Route>
         <Route path="/customers" render={(props) => 
           <CustomersPage
             customers={customers} 
             tickets={tickets}
             newCustomer={newCustomer}
-            handleChange={handleChange}
+            handleChange={handleCustomerChange}
             insertNewCustomer={insertNewCustomer}
+            newTicket={newTicket}
           />}>
         </Route>
       </Switch>
