@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import CustomerTicketList from './CustomerTicketList'
 
 export default function CustomerListItem(props) {
 
   const [clicked, setClicked] = useState(false)
-  const [matchingTickets, setMatchingTickets] = useState([])
 
   return (
     <div onClick={() => clicked ? setClicked(false) : setClicked(true)}>
