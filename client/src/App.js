@@ -19,6 +19,7 @@ function App() {
   const [technicians, setTechnicians] = useState([])
   const [newCustomer, setNewCustomer] = useState({name: '', location: ''})
   const [newTicket, setNewTicket] = useState({status: 'Open', priority: '', description: '', customer_id: ''})
+  const [newAssignment, setNewAssignment] = useState({technician_id: ''})
 
   useEffect(() => {
     const getCustomers = async () => {
@@ -41,12 +42,51 @@ function App() {
     getTechnicians()
   }, [])
 
+  const handleAssignmentChange = (e) => {
+    setNewAssignment({...newAssignment, [e.target.name]: e.target.value})
+
+  }
+
   const handleCustomerChange = (e) => {
     setNewCustomer({...newCustomer, [e.target.name]: e.target.value})
   }
 
   const handleTicketChange = (e) => {
     setNewTicket({...newTicket, [e.target.name]: e.target.value})
+  }
+
+  const updateNewAssignment = (ticket_id) => {
+
+    // update the ticket, then update the tech, then get and set all tickets, then get and set all techs
+    const update = async ()=> {
+      try {
+        await axios.put(`${BASE_URL}/ticket/${ticket_id}`, {assignedTech: newAssignment.technician_id})
+      } catch (err) {
+        console.log(err);
+      }
+
+      try {
+        await axios.put(`${BASE_URL}/technician/${newAssignment.technician_id}`, {assignedTicket: ticket_id})
+      } catch (err) {
+        console.log(err);
+      }
+
+      try {
+        const ticketResponse = await axios.get(`${BASE_URL}/ticket`)
+        setTickets(ticketResponse.data.tickets)
+      } catch (err) {
+        console.log(err);
+      }
+
+      try {
+        const techResponse = await axios.get(`${BASE_URL}/technician`)
+        setTechnicians(techResponse.data.technicians)
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+      update()
   }
 
   const insertNewCustomer = () => {
@@ -79,7 +119,17 @@ function App() {
       <Nav/>
       <Switch>
         <Route exact path="/" component={ Dashboard }></Route>
-        <Route exact path="/dispatch" component={ DispatchPage }></Route>
+        <Route path="/dispatch" render={(props) => 
+          <DispatchPage
+            tickets={tickets}
+            technicians={technicians}
+            customers={customers}
+            handleChange={handleAssignmentChange}
+            updateNewAssignment={updateNewAssignment}
+            newAssignment={newAssignment}
+            setNewAssignment={setNewAssignment}/>
+          }>
+        </Route>
         <Route path="/tickets" render={(props) => 
           <TicketsPage
             tickets={tickets}
