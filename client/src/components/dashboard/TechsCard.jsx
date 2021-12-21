@@ -12,7 +12,7 @@ export default function TechsCard(props) {
     setEnRoute(props.technicians.filter((element) => element.status === 'En Route').length)
     setAvailable(props.technicians.filter((element) => element.status === 'Available').length)
     setOffline(props.technicians.filter((element) => element.status === 'Offline').length)
-  }, [props.tickets])
+  }, [props.technicians])
 
   return (
     <section>
