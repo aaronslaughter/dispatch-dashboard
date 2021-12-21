@@ -180,7 +180,13 @@ function App() {
       <Header/>
       <Nav/>
       <Switch>
-        <Route exact path="/" component={ Dashboard }></Route>
+        <Route exact path="/" render={(props) =>
+          <Dashboard
+            tickets={tickets}
+            technicians={technicians}
+            customers={customers}/>
+          }>
+        </Route>
         <Route path="/dispatch" render={(props) => 
           <DispatchPage
             tickets={tickets}
