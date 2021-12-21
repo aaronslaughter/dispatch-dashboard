@@ -17,7 +17,12 @@ export default function TechsPage(props) {
       handleTechnicianChange={props.handleTechnicianChange}
       insertNewTechnician={props.insertNewTechnician}
       setActiveTab={setActiveTab}/> 
-      : <TicketResolver/>}
+      : <TicketResolver technicians={props.technicians}
+      tickets={props.tickets}
+      customers={props.customers}
+      handleTicketUpdateChange={props.handleTicketUpdateChange}
+      updateTicket={props.updateTicket}
+      setActiveTab={setActiveTab}/>}
     </main>
   )
 }

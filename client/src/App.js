@@ -104,6 +104,29 @@ function App() {
       } catch (err) {
         console.log(err);
       }
+
+      const matchingTech = technicians.filter((element) => element.assignedTicket === id)[0]
+
+      try {
+        await axios.put(`${BASE_URL}/technician/${matchingTech._id}`, {assignedTicket: null, status: 'Available'})
+      } catch (err) {
+        console.log(err);
+      }
+
+      try {
+        const response = await axios.get(`${BASE_URL}/technician`)
+        setTechnicians(response.data.technicians)
+      } catch (err){
+        console.log(err);
+      }
+
+      try { 
+        const response = await axios.get(`${BASE_URL}/ticket`)
+        setTickets(response.data.tickets)
+      } catch (err) {
+        console.log(err);
+      }
+      
     }
     update()
   }
