@@ -20,6 +20,8 @@ function App() {
   const [newCustomer, setNewCustomer] = useState({name: '', location: ''})
   const [newTicket, setNewTicket] = useState({status: 'Open', priority: '', description: '', customer_id: ''})
   const [newAssignment, setNewAssignment] = useState({technician_id: ''})
+  const [newTechnician, setNewTechnician] = useState({firstName: '', lastName: '', status: 'Available', seniorityLevel: 0})
+  const [updatedTicket, setUpdatedTicket] = useState({status: 'Resolved'})
 
   useEffect(() => {
     const getCustomers = async () => {
@@ -44,7 +46,10 @@ function App() {
 
   const handleAssignmentChange = (e) => {
     setNewAssignment({...newAssignment, [e.target.name]: e.target.value})
+  }
 
+  const handleTechnicianChange = (e) => {
+    setNewTechnician({...newTechnician, [e.target.name]: e.target.value})
   }
 
   const handleCustomerChange = (e) => {
@@ -53,6 +58,10 @@ function App() {
 
   const handleTicketChange = (e) => {
     setNewTicket({...newTicket, [e.target.name]: e.target.value})
+  }
+
+  const handleTicketUpdateChange = (e) => {
+    setUpdatedTicket({...updatedTicket, [e.target.name]: e.target.value})
   }
 
   const updateNewAssignment = (ticket_id) => {
@@ -66,7 +75,7 @@ function App() {
       }
 
       try {
-        await axios.put(`${BASE_URL}/technician/${newAssignment.technician_id}`, {assignedTicket: ticket_id})
+        await axios.put(`${BASE_URL}/technician/${newAssignment.technician_id}`, {assignedTicket: ticket_id, status: 'En Route'})
       } catch (err) {
         console.log(err);
       }
@@ -85,8 +94,61 @@ function App() {
         console.log(err);
       }
     }
-
       update()
+  }
+
+  const updateTicket = (id) => {
+    const update = async () => {
+      try {
+        await axios.put(`${BASE_URL}/ticket/${id}`, updatedTicket)
+      } catch (err) {
+        console.log(err);
+      }
+
+      const matchingTech = technicians.filter((element) => element.assignedTicket === id)[0]
+
+      try {
+        await axios.put(`${BASE_URL}/technician/${matchingTech._id}`, {assignedTicket: null, status: 'Available'})
+      } catch (err) {
+        console.log(err);
+      }
+
+      try {
+        const response = await axios.get(`${BASE_URL}/technician`)
+        setTechnicians(response.data.technicians)
+      } catch (err){
+        console.log(err);
+      }
+
+      try { 
+        const response = await axios.get(`${BASE_URL}/ticket`)
+        setTickets(response.data.tickets)
+      } catch (err) {
+        console.log(err);
+      }
+      
+    }
+    update()
+  }
+
+  const insertNewTechnician = () => {
+    const insert = async () => {
+      try {
+        await axios.post(`${BASE_URL}/technician`, newTechnician)
+      } catch (err) {
+        console.log(err);
+      }
+
+      try {
+        const response = await axios.get(`${BASE_URL}/technician`)
+        setTechnicians(response.data.technicians)
+        setNewTechnician({firstName: '', lastName: '', status: 'Available', seniorityLevel: 0})
+
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    insert()
   }
 
   const insertNewCustomer = () => {
@@ -139,7 +201,20 @@ function App() {
             insertNewTicket={insertNewTicket}/>
           }>
         </Route>
-        <Route exact path="/technicians" component={ TechsPage }></Route>
+          <Route path="/technicians" render={(props) => 
+            <TechsPage
+              technicians={technicians}
+              tickets={tickets}
+              customers={customers}
+              newTechnician={newTechnician}
+              updatedTicket={updatedTicket}
+              handleTechnicianChange={handleTechnicianChange}
+              handleTicketUpdateChange={handleTicketUpdateChange}
+              insertNewTechnician={insertNewTechnician}
+              updateTicket={updateTicket}
+            />
+          }>
+        </Route>
         <Route path="/customers" render={(props) => 
           <CustomersPage
             customers={customers} 

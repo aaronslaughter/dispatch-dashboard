@@ -42,7 +42,7 @@ const createTechnician = async (req, res) => {
 const getCustomerById = async (req, res) => {
     try {
         const { id } = req.params;
-        const customer = await customer.findById(id)
+        const customer = await Customer.findById(id)
         if (customer) {
             return res.status(200).json({ customer });
         }
@@ -77,7 +77,7 @@ const getCustomersByQuery = async (req, res) => {
 const getTicketById = async (req, res) => {
     try {
         const { id } = req.params;
-        const ticket = await ticket.findById(id)
+        const ticket = await Ticket.findById(id)
         if (ticket) {
             return res.status(200).json({ ticket });
         }
