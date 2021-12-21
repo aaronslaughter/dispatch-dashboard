@@ -1,12 +1,16 @@
 import React from 'react'
+import CustomerCard from './dashboard/CustomerCard'
+import DispatchCard from './dashboard/DispatchCard'
+import TechsCard from './dashboard/TechsCard'
+import TicketsCard from './dashboard/TicketsCard'
 
 export default function Dashboard() {
   return (
     <main>
-      <section>Dispatch Card Placeholder</section>
-      <section>Tickets Card Placeholder</section>
-      <section>Tech Card Placeholder</section>
-      <section>Customer Card Placeholder</section>
+      <DispatchCard/>
+      <TicketsCard/>
+      <TechsCard/>
+      <CustomerCard/>
     </main>
   )
 }
