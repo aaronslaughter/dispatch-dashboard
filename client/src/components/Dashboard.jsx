@@ -6,8 +6,8 @@ import TicketsCard from './dashboard/TicketsCard'
 
 export default function Dashboard(props) {
   return (
-    <main>
-      <DispatchCard 
+    <main className="dashboard-card-container">
+      <DispatchCard
         technicians={props.technicians}
         tickets={props.tickets}
       />
