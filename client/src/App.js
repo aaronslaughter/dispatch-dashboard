@@ -115,7 +115,17 @@ function App() {
       } catch (err) {
         console.log(err);
       }
+
+      try {
+        const response = await axios.get(`${BASE_URL}/technician`)
+        setTechnicians(response.data.technicians)
+        setNewTechnician({firstName: '', lastName: '', status: 'Available', seniorityLevel: 0})
+
+      } catch (err) {
+        console.log(err);
+      }
     }
+    insert()
   }
 
   const insertNewCustomer = () => {
