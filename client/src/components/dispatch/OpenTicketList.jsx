@@ -23,22 +23,24 @@ export default function OpenTicketList(props) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <select name="technician_id" onChange={props.handleChange}>
+        <select name="technician_id" onChange={props.handleChange} id="tech-selector">
           <option value="">Technician...</option>
           {props.availableTechs.map((element, index) => (
             <option value={element._id} key={index}>{element.firstName} {element.lastName}</option>
           ))}
         </select>
-        {props.openTickets.map((element, index) => (
-        <div key={index}>
-          <OpenTicketListItem
-            ticketSelector={ticketSelector}
-            ticket={element} 
-            customers={props.customers} 
-            newAssignment={props.newAssignment}
-          />
+        <div>
+          {props.openTickets.map((element, index) => (
+          <div key={index}>
+            <OpenTicketListItem
+              ticketSelector={ticketSelector}
+              ticket={element} 
+              customers={props.customers} 
+              newAssignment={props.newAssignment}
+            />
+          </div>
+          ))}
         </div>
-      ))}
       </form>
       
     </div>
