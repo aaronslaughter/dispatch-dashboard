@@ -97,6 +97,162 @@ button:hover {
   background-color: rgb(243, 255, 236);
 }
 
+.ticket-page-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  margin: 0 10em 0 10em;
+  font-size: 0.4em;
+}
+
+.active-tab {
+  color: rgb(200, 250, 178);
+  background-color: rgb(100, 150, 78);
+  font-weight: 750;
+  border-style: solid;
+}
+
+.inactive-tab:hover {
+  color: rgb(200, 250, 178);
+  background-color: rgb(100, 150, 78);
+  font-weight: 750;
+  border-style: solid;
+}
+
+.inactive-tab {
+  color:rgb(100, 150, 78);
+  background-color: rgb(200, 250, 178);
+  border-style: solid;
+}
+
+.active-tab:hover {
+  color:rgb(100, 150, 78);
+  background-color: rgb(200, 250, 178);
+  border-style: solid;
+}
+
+.ticket-page-main > :nth-child(3) {
+  grid-column-start: span 2;
+}
+
+.ticket-list-headers {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.ticket-list {
+  grid-column-start: span 6;
+}
+
+.ticket-list-item {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.ticket-creator-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+}
+
+.technician-page-main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  margin: 0 10em 0 10em;
+  font-size: 0.5em;
+}
+
+.technician-list-headers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  grid-column-start: span 3;
+}
+
+.technician-list-headers > *:nth-child(4) {
+  grid-column-start: span 3;
+}
+
+.technician-list-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.technician-creator {
+  grid-column-start: span 3;
+}
+
+.technician-creator-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+}
+
+.ticket-resolver {
+  grid-column-start: span 3;
+}
+
+.ticket-resolver-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+}
+
+.customer-page-main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  margin: 0 10em 0 10em;
+  font-size: 0.5em;
+}
+
+.customer-page-main > *:nth-child(3){
+  grid-column-start: span 2;
+}
+
+.customer-list-headers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.customer-list-headers > *:nth-child(4) {
+  grid-column-start: span 3;
+}
+
+.customer-list-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.customer-list-item > *:nth-child(4) {
+  grid-column-start: span 3;
+}
+
+.customer-ticket-list-item {
+  display: flex;
+  flex-wrap: wrap;
+  border-style: outset;
+  border-color: rgb(150, 200, 128);
+}
+
+.customer-ticket-list-single-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.customer-creator {
+  grid-column-start: span 3;
+}
+
+.customer-creator-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+}
 
 @media only screen and (min-width: 50em) {
   .dashboard-card-container {
@@ -112,6 +268,18 @@ button:hover {
   }
 
   .main-dispatch-headers {
+    font-size: 1em;
+  }
+
+  .ticket-page-main {
+    font-size: 1em;
+  }
+
+  .technician-page-main {
+    font-size: 1em;
+  }
+
+  .customer-page-main {
     font-size: 1em;
   }
 }

@@ -9,8 +9,8 @@ export default function TechnicianCreator(props) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="technician-creator">
+      <form className="technician-creator-form" onSubmit={handleSubmit}>
         <input type="text" 
           value={props.newTechnician.firstName} 
           onChange={props.handleTechnicianChange} 

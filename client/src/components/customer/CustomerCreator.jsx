@@ -9,8 +9,8 @@ export default function CustomerCreator(props) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="customer-creator">
+      <form onSubmit={handleSubmit} className="customer-creator-form">
         <input type="text" 
           value={props.newCustomer.name} 
           onChange={props.handleChange} 
