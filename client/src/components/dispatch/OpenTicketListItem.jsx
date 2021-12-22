@@ -7,13 +7,13 @@ export default function OpenTicketListItem(props) {
   }
 
   return (
-    <div>
+    <div className="open-ticket-list-item">
       <button onMouseDown={ticketCallback} type="submit" disabled={!props.newAssignment.technician_id}>Assign</button>
       <p>{props.customers.find((element) => element._id === props.ticket.customer_id).name}</p>
       <p>{props.ticket.assignedTech ? props.ticket.assignedTech : 'Not Assigned'}</p>
       <p>{props.ticket.status}</p>
       <p>{props.ticket.priority}</p>
-      <p>{props.ticket.description}</p>
+      <p className="shrink-text">{props.ticket.description}</p>
       <p>{props.ticket.resolution}</p>
     </div>
   )

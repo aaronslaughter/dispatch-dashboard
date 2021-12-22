@@ -2,6 +2,12 @@ import React, {useState, useEffect} from 'react'
 
 export default function CustomerCard(props) {
 
+  const [hotSite, setHotSites] = useState({name: '', tickets: []})
+
+  useEffect(() => {
+    setHotSites(getHotSite())
+  }, [props.customers])
+
   const getHotSite = () => {
     let hotSite = {name: '', tickets: []}
     let currentHigh = -1
@@ -14,12 +20,6 @@ export default function CustomerCard(props) {
     })
     return hotSite
   }
-
-  const [hotSite, setHotSites] = useState({name: '', tickets: []})
-
-  useEffect(() => {
-    setHotSites(getHotSite())
-  }, [props.customers])
 
   return (
     <section>

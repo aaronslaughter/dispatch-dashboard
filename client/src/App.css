@@ -1,38 +1,117 @@
+html {
+  background-color: rgb(243, 255, 236);
+  font-family: 'Gupter', serif;
+}
+
 .App {
   text-align: center;
+  background-color: rgb(243, 255, 236);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header > *, nav {
+  margin: 0;
+  background-color: rgb(150, 200, 128);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 1.2em;
+  margin: 0 0 1em 0;
+}
+
+nav > * {
+  text-decoration: none;
+}
+
+nav > *:hover {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.1em;
+  background-color: rgb(150, 200, 128);
+  height: 72px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-top: 1em;
+  margin-bottom: 0px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.dashboard-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.1em 1.1em;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.dashboard-card-container > * {
+  display: flex;
+  flex-direction: column;
+  min-width: 13em;
+  min-height: 13em;
+  background-color: rgb(150, 200, 128);
+  padding: 1em;
+  border-radius: 6%;
+  box-shadow: 3px 3px 5px rgb(100, 150, 78);
+  flex-basis: 10%;
+}
+
+.main-dispatch-headers {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 0 5em 0 5em;
+  font-size: 0.5em;
+}
+
+#tech-selector {
+  font-size: 1.4em;
+}
+
+.open-ticket-list-item {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-content: center;
+  margin: 1em;
+  padding: 0 5em 0 5em;
+  font-size: 0.5em;
+}
+
+button {
+  background-color: rgb(200, 250, 178);
+  box-shadow: 2px 2px 5px rgb(150, 200, 128);
+  border-style: solid;
+  border-color:rgba(75, 125, 50, 0.25);
+  border-radius: 5%;
+}
+
+button:hover {
+  background-color: rgb(243, 255, 236);
+}
+
+
+@media only screen and (min-width: 50em) {
+  .dashboard-card-container {
+    flex-direction: row;
   }
-  to {
-    transform: rotate(360deg);
+
+  nav {
+    font-size: 1.5em;
+  }
+
+  .open-ticket-list-item {
+    font-size: 1em;
+  }
+
+  .main-dispatch-headers {
+    font-size: 1em;
   }
 }

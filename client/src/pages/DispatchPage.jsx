@@ -21,13 +21,14 @@ export default function DispatchPage(props) {
 
   return (
     <main>
-      <div>Open Tickets</div>
-      <div>Customer:</div>
-      <div>Assigned Tech:</div>
-      <div>Status:</div>
-      <div>Priority:</div>
-      <div>Description:</div>
-      <div>Resolution:</div>    
+      <div className="main-dispatch-headers">
+        <div></div>
+        <div>Customer:</div>
+        <div>Assigned Tech:</div>
+        <div>Status:</div>
+        <div>Priority:</div>
+        <div>Description:</div>    
+      </div>
       <OpenTicketList
         handleChange={props.handleChange}
         newAssignment={props.newAssignment}
