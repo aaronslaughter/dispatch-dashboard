@@ -18,7 +18,7 @@ export default function TicketResolver(props) {
 
     const matchingTech = props.technicians.filter((element) => element._id === e.target.value)[0]
     
-    if (matchingTech.assignedTicket !== undefined) {
+    if (matchingTech.assignedTicket !== undefined && matchingTech.assignedTicket !== null) {
       const findMatchingTicket = async () => {
         try {
         const response = await axios.get(`${BASE_URL}/ticket/${matchingTech.assignedTicket}`)
