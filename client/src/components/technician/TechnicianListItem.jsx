@@ -13,7 +13,7 @@ export default function TechnicianListItem(props) {
   }, [])
 
   return (
-    <div>
+    <div className="technician-list-item">
       <div>{props.technician.firstName} {props.technician.lastName}</div>
       <div>{props.technician.status}</div>
       <div>{assignedTicket === '' ? 'No Ticket Assigned' : assignedTicket}</div>

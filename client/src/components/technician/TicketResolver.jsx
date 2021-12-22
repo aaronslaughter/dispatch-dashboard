@@ -38,8 +38,8 @@ export default function TicketResolver(props) {
   }
 
   return (
-    <div>
-      <form>
+    <div className="ticket-resolver">
+      <form className="ticket-resolver-form">
         <select onChange={handleChange}>
           <option value="">Technician...</option>
           {props.technicians.map((element, index) => (
