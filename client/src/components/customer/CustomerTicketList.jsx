@@ -15,15 +15,12 @@ export default function CustomerTicketList(props) {
   }, [])
 
   return (
-    <div>
+    <div className="customer-ticket-list-item">
       {matchingTickets.map((element, index) => (
-        <div key={index}>
-          <p>Status:</p>
-          <p>{element.status}</p>
-          <p>Priority:</p>
-          <p>{element.priority}</p>
-          <p>Description:</p>
-          <p>{element.description}:</p>
+        <div key={index} className="customer-ticket-list-single-item">
+          <p>Status: {element.status}</p>
+          <p>Priority: {element.priority}</p>
+          <p>Description: {element.description}</p>
         </div>
       ))}
       
