@@ -189,6 +189,7 @@ function App() {
         </Route>
         <Route path="/dispatch" render={(props) => 
           <DispatchPage
+            {...props}
             tickets={tickets}
             technicians={technicians}
             customers={customers}

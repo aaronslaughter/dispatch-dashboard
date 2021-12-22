@@ -12,6 +12,7 @@ export default function OpenTicketList(props) {
   const handleSubmit = (e) => {
     e.preventDefault()
     props.updateNewAssignment(selectedTicket)
+    props.history.push('/')
   }
 
   useEffect(() => {
