@@ -181,10 +181,7 @@ function App() {
       <Nav/>
       <Switch>
         <Route exact path="/" render={(props) =>
-          <Dashboard
-            tickets={tickets}
-            technicians={technicians}
-            customers={customers}/>
+          <div>Hello World</div>
           }>
         </Route>
         <Route path="/dispatch" render={(props) => 
