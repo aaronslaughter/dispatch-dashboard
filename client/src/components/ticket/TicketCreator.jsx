@@ -23,7 +23,7 @@ export default function TicketCreator(props) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="ticket-creator-form">
         <select name="customer_id" onChange={props.handleChange}>
           <option value="">Customer...</option>
           {props.customers.map((element, index) => (

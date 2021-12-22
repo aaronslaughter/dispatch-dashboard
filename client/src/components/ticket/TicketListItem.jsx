@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 
 export default function TicketListItem(props) {
   return (
-    <div>
+    <div className="ticket-list-item">
       <p>{props.customers.find((element) => element._id === props.ticket.customer_id).name}</p>
       <p>{props.ticket.assignedTech ? props.ticket.assignedTech : 'Not Assigned'}</p>
       <p>{props.ticket.status}</p>
