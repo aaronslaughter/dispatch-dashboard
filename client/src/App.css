@@ -1,5 +1,6 @@
 html {
   background-color: rgb(243, 255, 236);
+  font-family: 'Gupter', serif;
 }
 
 .App {
@@ -37,6 +38,7 @@ footer {
   bottom: 0px;
   left: 0px;
   right: 0px;
+  margin-top: 1em;
   margin-bottom: 0px;
 }
 
@@ -60,11 +62,14 @@ footer {
   padding: 1em;
   border-radius: 6%;
   box-shadow: 3px 3px 5px rgb(100, 150, 78);
+  flex-basis: 10%;
 }
 
 .main-dispatch-headers {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  padding: 0 5em 0 5em;
+  font-size: 0.5em;
 }
 
 #tech-selector {
@@ -75,14 +80,38 @@ footer {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   justify-content: center;
+  margin: 1em;
+  padding: 0 5em 0 5em;
+  font-size: 0.5em;
 }
 
-@media only screen and (min-width: 40em) {
+button {
+  background-color: rgb(200, 250, 178);
+  box-shadow: 3px 3px 5px rgb(150, 200, 128);
+  border-style: solid;
+  border-color:rgba(75, 125, 50, 0.25);
+  border-radius: 5%;
+}
+
+button:hover {
+  border-color:rgba(75, 125, 50, 0.75)
+}
+
+
+@media only screen and (min-width: 50em) {
   .dashboard-card-container {
     flex-direction: row;
   }
 
   nav {
     font-size: 1.5em;
+  }
+
+  .open-ticket-list-item {
+    font-size: 1em;
+  }
+
+  .main-dispatch-headers {
+    font-size: 1em;
   }
 }

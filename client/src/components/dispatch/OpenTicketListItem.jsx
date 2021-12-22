@@ -13,7 +13,7 @@ export default function OpenTicketListItem(props) {
       <p>{props.ticket.assignedTech ? props.ticket.assignedTech : 'Not Assigned'}</p>
       <p>{props.ticket.status}</p>
       <p>{props.ticket.priority}</p>
-      <p>{props.ticket.description}</p>
+      <p className="shrink-text">{props.ticket.description}</p>
       <p>{props.ticket.resolution}</p>
     </div>
   )
