@@ -189,6 +189,7 @@ function App() {
         </Route>
         <Route path="/dispatch" render={(props) => 
           <DispatchPage
+            {...props}
             tickets={tickets}
             technicians={technicians}
             customers={customers}
@@ -202,6 +203,7 @@ function App() {
           <TicketsPage
             tickets={tickets}
             customers={customers}
+            technicians={technicians}
             newTicket={newTicket}
             handleChange={handleTicketChange}
             insertNewTicket={insertNewTicket}/>

@@ -30,6 +30,7 @@ export default function DispatchPage(props) {
         <div>Description:</div>    
       </div>
       <OpenTicketList
+        {...props}
         handleChange={props.handleChange}
         newAssignment={props.newAssignment}
         setNewAssignment={props.setNewAssignment}

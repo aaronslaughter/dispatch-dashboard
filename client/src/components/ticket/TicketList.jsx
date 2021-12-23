@@ -13,7 +13,7 @@ export default function TicketList(props) {
       <div className="ticket-list"> 
         {props.tickets.map((element, index) => (
           <div key={index}>
-            <TicketListItem ticket={element} customers={props.customers}/>
+            <TicketListItem ticket={element} customers={props.customers} technicians={props.technicians}/>
           </div>
         ))}
       </div>
