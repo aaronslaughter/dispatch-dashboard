@@ -165,14 +165,85 @@ function App() {
 
     const tempNewTicket = newTicket
     setNewTicket({status: 'Open', priority: '', description: '', customer_id: ''})
+    let newTicketId
 
     const insert = async () => {
-      await axios.post(`${BASE_URL}/ticket`, tempNewTicket).then(async (res) => {
+
+      try {
+        const response = await axios.post(`${BASE_URL}/ticket`, tempNewTicket)
+        newTicketId = response.data.ticket._id
+      } catch (err) {
+        console.log(err)
+      }
+
+      try {
         const response = await axios.get(`${BASE_URL}/ticket`)
         setTickets(response.data.tickets)
-      })
+      } catch (err) {
+        console.log(err)
+      }
+
+      const matchingCustomer = customers.find((element) => tempNewTicket.customer_id === element._id)
+
+      try {
+        await axios.put(`${BASE_URL}/customer/${tempNewTicket.customer_id}`, {tickets: [...matchingCustomer.tickets, newTicketId]})
+      } catch (err) {
+        console.log(err)
+      }
     }
     insert()
+  }
+
+  const deleteResolvedTickets = () => {
+    const deleteAll = async () => {
+
+      const ticketIdsToRemove = []
+      tickets.forEach((element) => {
+        if (element.status === 'Resolved') {
+          ticketIdsToRemove.push(element._id)
+        }
+      })
+
+      customers.forEach( async (customer) => {
+        try {
+          await axios.put(`${BASE_URL}/customer/${customer._id}`, {tickets: customer.tickets.filter((ticket_id) => {
+            if (ticketIdsToRemove.includes(ticket_id)) {
+              return false
+            } else {
+              return true
+            }
+          })})
+        } catch (err) {
+          console.log(err);
+        }
+      })
+
+      tickets.forEach(async (element) => {
+        if (element.status === 'Resolved') {
+          try {
+            await axios.delete(`${BASE_URL}/ticket/${element._id}`)
+          } catch (err) {
+            console.log(err);
+          }
+        }
+      })
+
+      try {
+        const response = await axios.get(`${BASE_URL}/customer`)
+        setCustomers(response.data.customers)
+      } catch (err) {
+        console.log(err);
+      } 
+
+      try {
+        const response = await axios.get(`${BASE_URL}/ticket`)
+        setTickets(response.data.tickets)
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    deleteAll()
   }
   
   return (
@@ -206,7 +277,8 @@ function App() {
             technicians={technicians}
             newTicket={newTicket}
             handleChange={handleTicketChange}
-            insertNewTicket={insertNewTicket}/>
+            insertNewTicket={insertNewTicket}
+            deleteResolvedTickets={deleteResolvedTickets}/>
           }>
         </Route>
           <Route path="/technicians" render={(props) => 

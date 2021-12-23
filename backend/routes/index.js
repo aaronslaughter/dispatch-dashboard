@@ -8,6 +8,7 @@ router.get('/customer/query/', controllers.getCustomersByQuery)
 router.get('/customer/:id', controllers.getCustomerById)
 router.get('/customer', controllers.getAllCustomers)
 router.post('/customer', controllers.createCustomer)
+router.put('/customer/:id', controllers.updateCustomer)
 
 router.get('/ticket/customer/', controllers.getTicketsByCustomerId)
 router.get('/ticket/query/', controllers.getTicketsByQuery)

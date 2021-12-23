@@ -157,6 +157,23 @@ const getTechniciansByQuery = async (req, res) => {
 
 /////////// PUT ///////////////////////////////////////////////
 
+const updateCustomer = async (req, res) => {
+    try {
+        const { id } = req.params;
+        Customer.findByIdAndUpdate(id, req.body, { new: true }, (err, customer) => {
+            if (err) {
+                res.status(500).send(err);
+            }
+            if (!customer) {
+                res.status(500).send('Customer not found!');
+            }
+            return res.status(200).json(customer);
+        })
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
 const updateTicket = async (req, res) => {
     try {
         const { id } = req.params;
@@ -233,6 +250,7 @@ module.exports = {
     getTechnicianById,
     getAllTechnicians,
     getTechniciansByQuery,
+    updateCustomer,
     updateTicket,
     updateTechnician,
     deleteTicket,
