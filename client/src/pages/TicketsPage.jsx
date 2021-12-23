@@ -19,6 +19,7 @@ export default function TicketsPage(props) {
           newTicket={props.newTicket}
           setShowList={setShowList}
         />}
+      <button onClick={props.deleteResolvedTickets}>Delete Resolved Tickets</button>
     </main>
   )
 }
