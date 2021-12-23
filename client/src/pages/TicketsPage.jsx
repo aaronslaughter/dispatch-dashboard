@@ -10,7 +10,7 @@ export default function TicketsPage(props) {
     <main className="ticket-page-main">
       <h3 onClick={() => setShowList(true)} className={showList ? 'active-tab' : "inactive-tab"}>Ticket List</h3>
       <h3 onClick={() => setShowList(false)} className={showList ? "inactive-tab" : 'active-tab'}>New Ticket</h3>
-      {showList ? <TicketList tickets={props.tickets} customers={props.customers}/> : 
+      {showList ? <TicketList tickets={props.tickets} customers={props.customers} technicians={props.technicians}/> : 
         <TicketCreator
           newTicket={props.newTicket}
           customers={props.customers} 

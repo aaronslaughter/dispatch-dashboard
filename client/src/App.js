@@ -203,6 +203,7 @@ function App() {
           <TicketsPage
             tickets={tickets}
             customers={customers}
+            technicians={technicians}
             newTicket={newTicket}
             handleChange={handleTicketChange}
             insertNewTicket={insertNewTicket}/>
