@@ -20,12 +20,12 @@
 ### Getting Started:
 * Install Node, Node Package Manager, and MongoDB
 * Clone this repository
-* `npm install` in /client and /backend
-* `node <filename>` for each file in /backend/seed
-* `npm run dev` in /backend
+* `npm install` in /client and root
+* `node <filename>` for each file in /seed
+* `npm run dev` in root
 * `npm start` in /client
 
-### Or visit - :: not yet implemented ::
+### Or visit - :: [https://dispatchdashboard.herokuapp.com/]::
 ***
 
 ### Planning
@@ -37,10 +37,12 @@
 
 ***
 ### Future Updates:
-- [ ] Server/DB Backend
-- [ ] Customers Page
-- [ ] Tickets Page
-- [ ] Technicians Page
-- [ ] Dispatch Page
-- [ ] Dashboard
+- [x] Server/DB Backend
+- [x] Customers Page
+- [x] Tickets Page
+- [x] Technicians Page
+- [x] Dispatch Page
+- [x] Dashboard
+- [ ] Dashboard Graphs
+- [ ] Maps API
 
