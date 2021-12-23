@@ -25,7 +25,7 @@
 * `npm run dev` in root
 * `npm start` in /client
 
-### Or visit - :: [https://dispatchdashboard.herokuapp.com/]::
+### Or visit - https://dispatchdashboard.herokuapp.com/
 ***
 
 ### Planning
