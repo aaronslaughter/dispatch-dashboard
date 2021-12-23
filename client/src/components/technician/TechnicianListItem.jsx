@@ -16,7 +16,8 @@ export default function TechnicianListItem(props) {
     <div className="technician-list-item">
       <div>{props.technician.firstName} {props.technician.lastName}</div>
       <div>{props.technician.status}</div>
-      <div>{assignedTicket === '' ? 'No Ticket Assigned' : assignedTicket}</div>
+      <div>{assignedTicket === '' ? 'No Ticket Assigned' : 
+      props.customers.find((element) => element.tickets.includes(assignedTicket)).name}</div>
     </div>
   )
 }

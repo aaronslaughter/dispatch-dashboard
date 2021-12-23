@@ -10,7 +10,7 @@ export default function TechnicianList(props) {
       <div>
         {props.technicians.map((element, index) => 
           <div key={index}>
-            <TechnicianListItem technician={element} tickets={props.tickets}></TechnicianListItem>
+            <TechnicianListItem technician={element} tickets={props.tickets} customers={props.customers}></TechnicianListItem>
           </div>
         )}
       </div>
