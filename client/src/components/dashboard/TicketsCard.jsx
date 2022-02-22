@@ -57,7 +57,7 @@ export default function TicketsCard(props) {
           plugins: {
             title: {
               display: true,
-              text: 'Ticket Priorites'
+              text: 'Ticket Priorities'
             }
           }
         }}
