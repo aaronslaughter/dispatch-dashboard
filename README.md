@@ -43,6 +43,6 @@
 - [x] Technicians Page
 - [x] Dispatch Page
 - [x] Dashboard
-- [ ] Dashboard Graphs
+- [x] Dashboard Graphs
 - [ ] Maps API
 
