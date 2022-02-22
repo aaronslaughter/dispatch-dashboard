@@ -1,4 +1,21 @@
 import React, {useState, useEffect} from 'react'
+import { Bar } from 'react-chartjs-2'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+} from 'chart.js';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+);
 
 export default function DispatchCard(props) {
 
@@ -10,10 +27,31 @@ export default function DispatchCard(props) {
     setUnassignedTickets(props.tickets.filter((element) => element.status === 'Open' && !element.assignedTech).length)
   }, [props.technicians, props.tickets])
 
+  const graphState = {
+    labels: ['Available Techs', 'Unassigned Tickets'],
+    datasets: [
+      {
+        backgroundColor: ['rgba(50,255,50,0.75)', 'rgba(255,100,100,0.75)'],
+        borderColor: 'rgba(0,0,0,1)',
+        borderWidth: 2,
+        data: [availableTechs, unassignedTickets]
+      }
+    ]
+  }
+
   return (
     <section>
-      <p>Available Techs: {availableTechs}</p>
-      <p>Unassigned Tickets: {unassignedTickets}</p>
+      <Bar
+        data={graphState}
+        options={{
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              beginAtZero: true
+            }
+          }
+        }}
+      />
     </section>
   )
 }

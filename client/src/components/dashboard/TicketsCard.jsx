@@ -1,4 +1,23 @@
 import React, {useState, useEffect} from 'react'
+import { Doughnut } from 'react-chartjs-2'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  ArcElement,
+} from 'chart.js';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  ArcElement
+);
 
 export default function TicketsCard(props) {
 
@@ -14,12 +33,35 @@ export default function TicketsCard(props) {
     setResolved(props.tickets.filter((element) => element.status === 'Resolved').length)
   }, [props.tickets])
 
+  const graphState = {
+    labels: ['High','Medium','Low','Resolved'],
+    datasets: [
+      {
+        backgroundColor: ['rgba(255,100,100,0.75)','rgba(225,225,100,0.75)','rgba(50,255,50,0.75)', 'rgba(150,150,150,0.75)'],
+        data: [highPriority, mediumPriority, lowPriority, resolved],
+        borderColor: 'rgba(0,0,0,1)',
+        borderWidth: 2,
+        hoverOffset: 30
+      }
+    ]
+  }
+
   return (
-    <section>
-      <p>High Priority Tickets: {highPriority}</p>
-      <p>Medium Priority Tickets: {mediumPriority}</p>
-      <p>Low Priority Tickets: {lowPriority}</p>
-      <p>Resolved Tickets: {resolved}</p>
+    <section className='dashboard-card'>
+      <Doughnut
+        data={graphState}
+        options={{
+          layout: {
+            padding: 10
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: 'Ticket Priorites'
+            }
+          }
+        }}
+      />
     </section>
   )
 }
