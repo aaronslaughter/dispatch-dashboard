@@ -49,6 +49,12 @@ export default function DispatchCard(props) {
             x: {
               beginAtZero: true
             }
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: 'Active Tickets'
+            }
           }
         }}
       />
