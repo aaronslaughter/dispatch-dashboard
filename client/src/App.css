@@ -1,16 +1,18 @@
 html {
-  background-color: rgb(243, 255, 236);
-  font-family: 'Gupter', serif;
+  background-color: rgb(228, 230, 255);
+  font-family: 'Roboto', sans-serif;
 }
 
 .App {
   text-align: center;
-  background-color: rgb(243, 255, 236);
+  background-color: rgb(228, 230, 255);
 }
 
 .header > *, nav {
   margin: 0;
-  background-color: rgb(150, 200, 128);
+  background-color: rgb(116, 176, 216);
+  padding: .75em;
+  color: rgb(82, 82, 82);
 }
 
 nav {
@@ -22,6 +24,7 @@ nav {
 
 nav > * {
   text-decoration: none;
+  color: rgb(82, 82, 82)
 }
 
 nav > *:hover {
@@ -33,7 +36,7 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 1.1em;
-  background-color: rgb(150, 200, 128);
+  background-color: rgb(116, 176, 216);
   height: 72px;
   bottom: 0px;
   left: 0px;
@@ -51,6 +54,7 @@ footer {
   gap: 1.1em 1.1em;
   font-size: 1.5em;
   font-weight: 500;
+  color: rgb(82, 82, 82)
 }
 
 .dashboard-card-container > * {
@@ -58,10 +62,10 @@ footer {
   flex-direction: column;
   min-width: 13em;
   min-height: 13em;
-  background-color: rgb(150, 200, 128);
+  background-color: rgb(116, 176, 216);
   padding: 1em;
   border-radius: 6%;
-  box-shadow: 3px 3px 5px rgb(100, 150, 78);
+  box-shadow: 3px 3px 5px rgb(66, 126, 166);
   flex-basis: 10%;
 }
 
@@ -86,15 +90,15 @@ footer {
 }
 
 button {
-  background-color: rgb(200, 250, 178);
-  box-shadow: 2px 2px 5px rgb(150, 200, 128);
+  background-color: rgb(178,200,250);
+  box-shadow: 2px 2px 5px rgb(116, 176, 216);
   border-style: solid;
   border-color:rgba(75, 125, 50, 0.25);
   border-radius: 5%;
 }
 
 button:hover {
-  background-color: rgb(243, 255, 236);
+  background-color: rgb(236, 243, 255);
 }
 
 .ticket-page-main {
@@ -106,28 +110,28 @@ button:hover {
 }
 
 .active-tab {
-  color: rgb(200, 250, 178);
-  background-color: rgb(100, 150, 78);
+  color: rgb(178,200,250);
+  background-color: rgb(78, 100, 150);
   font-weight: 750;
   border-style: solid;
 }
 
 .inactive-tab:hover {
-  color: rgb(200, 250, 178);
-  background-color: rgb(100, 150, 78);
+  color: rgb(178,200,250);
+  background-color: rgb(66, 126, 166);
   font-weight: 750;
   border-style: solid;
 }
 
 .inactive-tab {
-  color:rgb(100, 150, 78);
-  background-color: rgb(200, 250, 178);
+  color:rgb(66, 126, 166);
+  background-color: rgb(178,200,250);
   border-style: solid;
 }
 
 .active-tab:hover {
-  color:rgb(100, 150, 78);
-  background-color: rgb(200, 250, 178);
+  color:rgb(66, 126, 166);
+  background-color: rgb(78, 100, 150);
   border-style: solid;
 }
 
@@ -235,7 +239,7 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   border-style: outset;
-  border-color: rgb(150, 200, 128);
+  border-color: rgb(116, 176, 216);
 }
 
 .customer-ticket-list-single-item {
@@ -252,6 +256,12 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   gap: 1em;
+}
+
+.non-zero-tickets {
+  color: rgb(255,75,75);
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 @media only screen and (min-width: 50em) {
