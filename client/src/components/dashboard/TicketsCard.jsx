@@ -37,9 +37,9 @@ export default function TicketsCard(props) {
     labels: ['High','Medium','Low','Resolved'],
     datasets: [
       {
-        backgroundColor: ['rgba(255,100,100,0.75)','rgba(225,225,100,0.75)','rgba(50,255,50,0.75)', 'rgba(150,150,150,0.75)'],
+        backgroundColor: ['rgba(255,100,100,0.75)','rgba(225,225,100,0.75)','rgba(100,255,100,0.75)', 'rgba(150,150,150,0.75)'],
         data: [highPriority, mediumPriority, lowPriority, resolved],
-        borderColor: 'rgba(0,0,0,1)',
+        borderColor: 'rgba(0,0,0,0)',
         borderWidth: 2,
         hoverOffset: 30
       }

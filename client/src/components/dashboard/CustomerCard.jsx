@@ -25,7 +25,10 @@ export default function CustomerCard(props) {
     <section>
       <p>Hot Site:</p>
       <p>{hotSite.name}</p>
-      <p>{hotSite.tickets.length} Tickets Open</p>
+      {hotSite.tickets.length > 0 ? 
+        <p><span className='non-zero-tickets'>{hotSite.tickets.length}</span> Tickets Open</p> :
+        <p><span className='zero-tickets'>{hotSite.tickets.length}</span> Tickets Open</p>
+      }
     </section>
   )
 }

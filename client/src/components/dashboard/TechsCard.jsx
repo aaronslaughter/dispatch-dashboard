@@ -36,8 +36,8 @@ export default function TechsCard(props) {
     labels: ['On Site', 'En Route', 'Available', 'Offline'],
     datasets: [
       {
-        backgroundColor: ['rgba(255,100,100,0.75)','rgba(225,225,100,0.75)','rgba(50,255,50,0.75)', 'rgba(150,150,150,0.75)'],
-        borderColor: 'rgba(0,0,0,1)',
+        backgroundColor: ['rgba(255,100,100,0.75)','rgba(225,225,100,0.75)','rgba(100,255,100,0.75)', 'rgba(150,150,150,0.75)'],
+        borderColor: 'rgba(0,0,0,0)',
         borderWidth: 2,
         data: [onSite, enRoute, available, offline]
       }

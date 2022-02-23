@@ -31,8 +31,8 @@ export default function DispatchCard(props) {
     labels: ['Available Techs', 'Unassigned Tickets'],
     datasets: [
       {
-        backgroundColor: ['rgba(50,255,50,0.75)', 'rgba(255,100,100,0.75)'],
-        borderColor: 'rgba(0,0,0,1)',
+        backgroundColor: ['rgba(100,255,100,0.75)', 'rgba(255,100,100,0.75)'],
+        borderColor: 'rgba(0,0,0,0)',
         borderWidth: 2,
         data: [availableTechs, unassignedTickets]
       }
